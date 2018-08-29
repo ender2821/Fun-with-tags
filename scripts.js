@@ -29,7 +29,6 @@ function generateTags() {
 
 function submitTag(e) {
   const tagValue = input.value.toLowerCase();
-  console.log(storedData.indexOf(tagValue));
   if (storedData.indexOf(tagValue) > -1) {
     alert('This tag already exists');
     input.value = '';
@@ -64,7 +63,7 @@ document.querySelector('body').addEventListener('click', function(e) {
   }
 });
 
-// persist data with local storage. 
+// persist data with local storage
 
 function locateData() {
   let parsedData = JSON.parse(localStorage.getItem("storedData"))
