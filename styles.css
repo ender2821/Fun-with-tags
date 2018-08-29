@@ -111,6 +111,12 @@ h1 {
   padding: 1rem;
   background: #6DB3BF;
   color: #153641;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.tag:hover{
+  background: #94CFC9;
 }
 
 .inputs {

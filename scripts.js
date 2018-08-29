@@ -5,12 +5,15 @@ const deleteButton = document.querySelector('deleteTag')
 const input = document.getElementById('tagName');
 const tags = document.querySelector('.tags');
 let storedData = [];
+
 // render tags
+
 function generateTags() {  
+  const setStorage = localStorage.setItem("storedData", JSON.stringify(storedData));
   if (storedData === undefined || storedData.length == 0) {
-    console.log(tags);
     let html = '<p>Add Some Tags!<p>';
     tags.innerHTML = html;
+    setStorage;
   } else {
     storedData.sort();
     let html = '';
@@ -18,14 +21,20 @@ function generateTags() {
       html += '<li class="tag">' + storedData[i] + '' + "</li>";
     }
     tags.innerHTML = html;
-    localStorage.setItem("storedData", JSON.stringify(storedData));
+    setStorage;
   }
 }
 
 // add user submitted items to array
 
 function submitTag(e) {
-  tagValue = input.value;
+  const tagValue = input.value.toLowerCase();
+  console.log(storedData.indexOf(tagValue));
+  if (storedData.indexOf(tagValue) > -1) {
+    alert('This tag already exists');
+    input.value = '';
+    return
+  }
   storedData.push(tagValue);
   input.value = '';
   generateTags();
@@ -61,8 +70,9 @@ function locateData() {
   let parsedData = JSON.parse(localStorage.getItem("storedData"))
   if (parsedData != undefined && parsedData != null) {
     storedData = parsedData
-  } 
+  }
 }
+
 // run js
 
 locateData();
