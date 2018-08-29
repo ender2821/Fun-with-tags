@@ -124,7 +124,8 @@ input {
   width: 100%;
   padding: 1rem;
   background: none;
-  color: #94CFC9
+  color: #94CFC9;
+  text-align: center;
 }
 
 button {
