@@ -64,7 +64,7 @@ function deleteTag(e) {
 }
 
 document.querySelector('body').addEventListener('click', function(e) {
-  if (event.target.tagName.toLowerCase() === 'li') {
+  if (event.target.getAttribute('class') === 'tag') {
     const index = storedData.indexOf(event.target.innerHTML);
     if (index !== -1) {
         storedData.splice(index, 1);
