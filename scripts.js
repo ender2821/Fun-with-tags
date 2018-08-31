@@ -33,6 +33,16 @@ function submitTag(e) {
     alert('This tag already exists');
     input.value = '';
     return
+  } else if ( tagValue == '' ) {
+    input.value = '';
+    return
+  } else if ( tagValue.match(/^\s+$/)) {
+    input.value = '';
+    return
+  } else if ( tagValue.match(/[^A-Za-z0-9\s]+/)) {
+    alert('No numbers or special characters allowed.');
+    input.value = '';
+    return
   }
   storedData.push(tagValue);
   input.value = '';
@@ -40,7 +50,7 @@ function submitTag(e) {
 }
 
 addButton.addEventListener('click', submitTag);
-input.addEventListener("keyup", function(event) {
+input.addEventListener('keyup', function(event) {
   if (event.keyCode === 13) {
     submitTag();
   }
@@ -75,4 +85,4 @@ function locateData() {
 // run js
 
 locateData();
-generateTags()
+generateTags();
