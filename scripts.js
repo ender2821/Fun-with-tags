@@ -33,10 +33,7 @@ function submitTag(e) {
     alert('This tag already exists');
     input.value = '';
     return
-  } else if ( tagValue == '' ) {
-    input.value = '';
-    return
-  } else if ( tagValue.match(/^\s+$/)) {
+  } else if ( tagValue == '' || tagValue.match(/^\s+$/)) {
     input.value = '';
     return
   } else if ( tagValue.match(/[^A-Za-z0-9\s]+/)) {
@@ -67,7 +64,7 @@ document.querySelector('body').addEventListener('click', function(e) {
   if (event.target.getAttribute('class') === 'tag') {
     const index = storedData.indexOf(event.target.innerHTML);
     if (index !== -1) {
-        storedData.splice(index, 1);
+      storedData.splice(index, 1);
     }
     generateTags();
   }
